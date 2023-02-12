@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+body {
+	padding: 15px;
+}
+
+.mainwrap {
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+table, th, td {
+	border: 1px solid black;
+	bordercollapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+	textalign: left;
+}
+
+.table {
+	width: 500px;
+	border-collapse: collapse;
+}
+
+.data {
+	text-align: center;
+}
+
+.signature {
+	padding-top: 5px;
+	font-weight: bold;
+}
+
+.note {
+	padding-top: 20px;
+}
+
+.text {
+	text-align: center;
+}
+</style>
+<title>Weekly Attendance Status</title>
+</head>
+<body>
+	<div class="mainwrap">
+		Dear <span th:text="${empName}"></span>,
+		<p>Please find the status of your last week's attendance:-</p>
+		<div class="table-data">
+			<table class="table">
+				<tr>
+					<th>Date</th>
+					<th>Status</th>
+				</tr>
+				<tr th:each="attendance,iterationStatus  : ${attendanceList}">
+					<td class="text" th:text="${attendance.date}"></td>
+					<td class="text" th:text="${attendance.status}"></td>
+				</tr>
+			</table>
+		</div>
+		<p>This is an intimation to review your attendance on a regular
+			basis. It is your responsibility to follow the leave and attendance
+			guidelines religiously.</p>
+
+		<p>In case you are facing any problem in marking your attendance
+			or you have any concerns, please feel free to reach out to your HR.</p>
+
+		
+		<div class="signature">
+			<div>Regards</div>
+			<div>HR Team</div>
+		</div>
+		<div class="note">
+			<font color="red">Note: This is a system generated mail.
+				Please do not respond to this mail.</font>
+		</div>
+	</div>
+</body>
+</html>

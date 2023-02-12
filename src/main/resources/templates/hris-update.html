@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+body {
+	padding: 15px;
+}
+
+.mainwrap {
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+table, th, td {
+	border: 1px solid black;
+	bordercollapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+	textalign: left;
+}
+
+.table {
+	width: 600px;
+	border-collapse: collapse;
+}
+
+.data {
+	text-align: center;
+}
+
+.signature {
+	padding-top: 20px;
+}
+
+.note {
+	padding-top: 20px;
+}
+
+.signature {
+	padding-top: 5px;
+	font-weight: bold;
+}
+
+.data {
+	text-align: center;
+}
+
+    </style>
+</head>
+<body>
+<div class="mainwrap">
+    <p>
+        Dear <span th:text="${empName}"></span> [ <span th:text="${empId}"></span> ]
+    </p>
+    <p>Kindly find your last week attendance details below.</p>
+    <table class="table">
+
+        <tr>
+            <th>Attendance Date</th>
+            <th>In Time</th>
+            <th>Out Time</th>
+            <th>Status</th>
+        </tr>
+
+        <tr th:each="attendance,iterationStatus  : ${details}">
+            <td class="data" th:text="${attendance.attendanceDate}"></td>
+            <td class="data" th:text="${attendance.punchInTime}"></td>
+            <td class="data" th:text="${attendance.punchOutTime}"></td>
+            <td class="data" th:text="${attendance.status}"></td>
+        </tr>
+
+    </table>
+
+    <div class="signature">
+        <div>Regards</div>
+        <div>HR Team</div>
+    </div>
+    <div class="note">
+        <font color="red">Note: This is a system generated mail. Please do not respond to this mail.</font>
+    </div>
+</div>
+</body>
+</html>
